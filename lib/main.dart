@@ -52,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
         if (quizBrain.isFinished() == true) {
           Alert(
                   context: context,
-                  title: "No Question Left",
+                  title: "Finished!",
                   desc: "You've answered all the questions.")
               .show();
           quizBrain.reset();
