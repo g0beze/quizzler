@@ -57,7 +57,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questions[questionNum].questionText,
+                quizBrain.getQuestionText(questionNum),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
@@ -82,8 +82,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.questions[questionNum].questionAnswer;
+                bool correctAnswer = quizBrain.getQuestionAnswer(questionNum);
 
                 if (correctAnswer == true) {
                   print('user got the answer right');
@@ -119,8 +118,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked false.
 
-                bool correctAnswer =
-                    quizBrain.questions[questionNum].questionAnswer;
+                bool correctAnswer = quizBrain.getQuestionAnswer(questionNum);
 
                 if (correctAnswer == false) {
                   print('user got the answer right');
