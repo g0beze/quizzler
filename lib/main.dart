@@ -32,6 +32,10 @@ List<String> questions = [
   'A slug\'s blood is green.'
 ];
 
+List<bool> answers = [false, true, true];
+
+int questionNum = 0;
+
 class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
@@ -39,15 +43,15 @@ class _QuizPageState extends State<QuizPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        const Expanded(
+        Expanded(
           flex: 5,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questions[questionNum],
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 25.0,
                   color: Colors.white,
                 ),
@@ -70,6 +74,20 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctAnswer = answers[questionNum];
+
+                if (correctAnswer == true) {
+                  print('user got the answer right');
+                } else {
+                  print('user got it wrong');
+                }
+
+                setState(
+                  () {
+                    questionNum++;
+                  },
+                );
+
                 //The user picked true.
               },
             ),
@@ -91,6 +109,17 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
+
+                bool correctAnswer = answers[questionNum];
+
+                if (correctAnswer == false) {
+                  print('user got the answer right');
+                } else {
+                  print('user got it wrong');
+                }
+                setState(() {
+                  questionNum++;
+                });
               },
             ),
           ),
